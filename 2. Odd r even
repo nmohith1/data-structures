@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+
+int main()
+
+{
+    int num, i, count = 0;
+    printf("Enter the number of elements in the set: ");
+    scanf("%d", &num);
+
+    int arr[num];
+    printf("Enter the elements of the set: ");
+    for(i = 0; i < num; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Odd numbers in the set are: ");
+    for(i = 0; i < num; i++)
+    {
+        if(arr[i] % 2!= 0)
+        {
+            printf("%d ", arr[i]);
+            count++;
+        }
+    }
+
+    printf("\nEven numbers in the set are: ");
+    for(i = 0; i < num; i++)
+    {
+        if(arr[i] % 2 == 0)
+        {
+            printf("%d ", arr[i]);
+            count++;
+        }
+    }
+
+    printf("\nTotal number of odd and even numbers in the set are: %d", count);
+
+    return 0;
+
+}
