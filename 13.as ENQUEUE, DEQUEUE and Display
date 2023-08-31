@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 5
+typedef struct Queue
+{
+    int front, rear;
+    int size;
+    int *arr;
+} Queue;
+Queue *createQueue()
+{
+    Queue *q = (Queue *)malloc(sizeof(Queue));
+    q->front = q->rear = -1;
+    q->size = 0;
+    q->arr = (int *)malloc(MAX * sizeof(int));
+    return q;
+}
+void enQueue(Queue *q, int data)
+{
+    if (q->rear == MAX - 1)
+    {
+        printf("Queue is full\n");
+        return;
+    }
+    q->rear++;
+    q->arr[q->rear] = data;
+    q->size++;
+}
+int deQueue(Queue *q)
+{
+    if (q->front == q->rear)
+    {
+        printf("Queue is empty\n");
+        return -1;
+    }
+    q->front++;
+    int data = q->arr[q->front];
+    q->size--;
+    return data;
+}
+void displayQueue(Queue *q)
+{
+    if (q->front == q->rear)
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+    for (int i = q->front + 1; i <= q->rear; i++)
+    {
+        printf("%d ", q->arr[i]);
+    }
+    printf("\n");
+}
+int main()
+{
+    Queue *q = createQueue();
+    enQueue(q, 1);
+    enQueue(q, 2);
+    enQueue(q, 3);
+    enQueue(q, 4);
+    enQueue(q, 5);
+    displayQueue(q);
+    printf("Dequeued element: %d\n", deQueue(q));
+    printf("Dequeued element: %d\n", deQueue(q));
+    printf("Dequeued element: %d\n", deQueue(q));
+    printf("Dequeued element: %d\n", deQueue(q));
+    printf("Dequeued
